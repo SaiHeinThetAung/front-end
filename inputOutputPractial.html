@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #result{
+        width: 200px;
+        height: 30px;
+        display: inline-block;
+      }
+      input{
+        width: 200px;
+      }
+    </style>
+</head>
+<body>
+    <h1>Calculation Of Area</h1>
+    <div>
+      <span >result: </span>
+      <span id="result"></span>
+      <button id="store" onclick="storedata()">Store</button>
+      <button id="clear" onclick="cleardata()">Clear data</button>
+
+    </div>
+    <br>
+  <div>
+
+    <input type="number" id="inputw" placeholder="Width">
+    <input type="number" id="inputh" placeholder="Breadth">
+    <button id="cal" onclick="calarea()">Calculate</button>
+
+  </div>
+        <ul id="list">
+        </ul>
+
+    <script>
+        let w=document.getElementById('inputw');
+        let h=document.getElementById('inputh');
+        let out=document.getElementById('result');
+        let ary=[];
+        let index=0;
+        
+
+      function calarea(){
+        out.innerHTML=w.value+'ft x '+h.value+'ft='+w.value*h.value+'ft<sup>2</sup>';
+       
+
+      }
+      function cleardata(){
+            w.value='';
+            h.value='';
+      }
+      function storedata(){
+        document.getElementById('list').innerHTML+='<li>'+w.value+'ft x '+h.value+'ft='+w.value*h.value+'ft<sup>2</sup>'+'</li>';
+       
+      }
+    </script>
+
+</body>
+</html>
