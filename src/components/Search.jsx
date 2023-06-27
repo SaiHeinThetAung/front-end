@@ -1,0 +1,35 @@
+import React, { useState,useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import {BsYoutube} from 'react-icons/bs'
+
+const Search = () => {
+  const {name}=useParams()
+  const [nam,setNam]=useState({})
+  useEffect(()=>{
+    fetchdata()
+},[])
+
+const fetchdata=async()=>{
+  const api=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+  const data=await api.json()
+  setNam(data.meals[0])
+  console.log(data.meals[0]);
+}
+  return (
+    <div className='flex justify-center  items-center  w-[90%] mx-auto gap-3'>
+      <img src={nam.strMealThumb} alt="" className='rounded object-cover h-[420px] m-1'/>
+      <div className='h-96'>
+         <h1 className='text-gray-500 text-2xl tracking-wide font-semibold mb-3'>{nam.strMeal}</h1> 
+         <h1 className='text-gray-500 text-lg tracking-wide font-semibold mb-3'>{nam.strArea}</h1>   
+         <h1 className='text-gray-500 text-base tracking-wide font-semibold'>{nam.strCategory}</h1>  
+         <p className='leading-8 tracking-wide text-sm' >{nam.strInstructions}</p>
+          <a href={nam.strYoutube} >
+            <BsYoutube className='text-4xl text-red-600'/>
+         </a>    
+
+      </div>
+    </div>
+  )
+}
+
+export default Search
